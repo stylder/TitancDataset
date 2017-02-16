@@ -1,0 +1,109 @@
+---
+title: "Reporte"
+author: "Erik Mejia Hernandez -Santiago García Cabral"
+date: "16 de febrero de 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Leer Datos
+Conocer ubicación de directorio
+```{r}
+getwd()
+```
+
+
+Mostrar contenido del directorio actual
+```{r}
+list.files()
+```
+
+Cargar datos de archivo en una variable
+```{r}
+train <- read.csv("train.csv", stringsAsFactors = FALSE)
+```
+
+
+
+Para comprobar que el archivo se bajó
+```{r}
+head(train)
+```
+
+para ver la estructura del dataset
+```{r}
+str(train)
+```
+
+
+
+## Describe the data domain
+```{r}
+str(train)
+```
+
+
+## Describe each of the variables
+Sobrevivientes 
+```{r}
+table(train$Sex, train$Survived)
+```
+
+Nombre 
+```{r}
+
+```
+
+
+Sex 
+```{r}
+
+```
+
+SibSp 
+```{r}
+
+```
+
+Parch 
+```{r}
+
+```
+
+
+Ticket 
+```{r}
+
+```
+
+Fare 
+```{r}
+
+```
+
+Cabin 
+```{r}
+
+```
+
+Embarked 
+```{r}
+
+```
+
+
+## Basic summary statistics.
+
+## Boxplots. Interpretation.
+
+## Skew of the data. Interpretation.
+
+## Histograms. Interpretation.
+
+## Quartiles and interpretation.
+
+## Correlation. Interpretation.
+
+## Scatterplots. Interpretation.
