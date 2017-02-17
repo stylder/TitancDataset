@@ -109,8 +109,63 @@ table(train$Embarked)
 
 
 ## Basic summary statistics.
+Sobrevivientes 
+```{r}
+summary(train$Survived)
+```
+
+Clase
+```{r}
+
+```
+
+Nombre 
+```{r}
+
+```
+
+
+Sex 
+```{r}
+
+```
+
+SibSp  "Número de hermanos / cónyuges en el extranjero"
+```{r}
+
+```
+
+Parch  "Parche Número de Padres / Niños a bordo"
+```{r}
+
+```
+
+
+Ticket 
+```{r}
+
+```
+
+Fare 
+```{r}
+
+```
+
+Cabin 
+```{r}
+
+```
+
+Embarked 
+```{r}
+
+```
 
 ## Boxplots. Interpretation.
+```{r}
+boxplot(train$Age, xlab="Edades de pasajeros (Años)")
+```
+
 
 ## Skew of the data. Interpretation.
 
