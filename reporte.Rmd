@@ -170,9 +170,30 @@ boxplot(train$Age, xlab="Edades de pasajeros (Años)")
 ## Skew of the data. Interpretation.
 
 ## Histograms. Interpretation.
+```{r}
+hist(na.omit(train$Age),
+     main = "Histograma de las edades de los pasajeros",
+     xlab = "Edad",
+     ylab = "Personas")
+
+```
 
 ## Quartiles and interpretation.
+```{r}
+summary(na.omit(train$Age))
+IQR(na.omit(train$Age))
 
+quantile(na.omit(train$Fare))
+```
 ## Correlation. Interpretation.
+```{r}
+cor(train$Age,train$Fare, use="complete.obs")
 
+```
 ## Scatterplots. Interpretation.
+```{r}
+
+train$Pclass <- as.factor(train$Pclass)
+train$Survived <- as.factor(train$Survived)
+plot(train$Pclass,train$Survived)
+```
