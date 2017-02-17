@@ -45,31 +45,41 @@ str(train)
 ```
 
 
-## Describe each of the variables
+## Describe cada una de las variables
 Sobrevivientes 
 ```{r}
-table(train$Sex, train$Survived)
+train$Survived <- as.factor(train$Survived)
+table(train$Survived)
+```
+
+Clase
+```{r}
+table(train$Pclass)
 ```
 
 Nombre 
 ```{r}
-
+#train$Name
 ```
 
 
 Sex 
 ```{r}
-
+train$Sex <- as.factor(train$Sex)
+table(train$Sex)
+table(train$Sex, train$Survived)
 ```
 
-SibSp 
+SibSp  "Número de hermanos / cónyuges en el extranjero"
 ```{r}
-
+train$SibSp <- as.factor(train$SibSp)
+table(train$SibSp)
 ```
 
-Parch 
+Parch  "Parche Número de Padres / Niños a bordo"
 ```{r}
-
+train$Parch <- as.factor(train$Parch)
+table(train$Parch)
 ```
 
 
@@ -90,8 +100,12 @@ Cabin
 
 Embarked 
 ```{r}
-
+train$Embarked <- as.factor(train$Embarked)
+table(train$Embarked)
 ```
+
+
+
 
 
 ## Basic summary statistics.
