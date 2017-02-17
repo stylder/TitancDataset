@@ -98,7 +98,7 @@ Cabin
 
 ```
 
-Embarked 
+Embarked (C = Cherbourg; Q = Queenstown; S = Southampton)
 ```{r}
 train$Embarked <- as.factor(train$Embarked)
 table(train$Embarked)
@@ -153,7 +153,7 @@ Fare
 
 Cabin 
 ```{r}
-
+sum(train$Cabin != "")
 ```
 
 Embarked 
