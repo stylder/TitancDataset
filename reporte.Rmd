@@ -174,31 +174,89 @@ boxplot(train$Age, xlab="Edades de pasajeros (Años)")
 
 ## Skew of the data. Interpretation.
 
-## Histograms. Interpretation.
-```{r}
+## Histogramas.
+Histograma de la edad.
+
+Al revisar este histograma, lo que nos indica es que mas del 60% de las personas tenían menos de 40 años, así como, la mayor cantidad de personas tenían entre 20 a 30 años de edad respecto a las otras columnas.
+```{r, echo=FALSE}
 hist(na.omit(train$Age),
      main = "Histograma de las edades de los pasajeros",
      xlab = "Edad",
-     ylab = "Personas")
+     ylab = "Personas",
+     labels = TRUE)
 
 ```
 
-## Quartiles and interpretation.
-```{r}
+## Cuartiles.
+Cuartiles y rango intercuartil de la edad.
+
+Se puede denotar aquí que el 50 % de las personas está entre los 20 años y los 38, es donde esta la mayor concentración de las personas que iban en el Titanic.Además, la persona con menos edad era un bebé de aproximadamente 5 meses, y la persona con más edad era una persona de 80 años
+```{r, echo=FALSE}
 summary(na.omit(train$Age))
 IQR(na.omit(train$Age))
-
-quantile(na.omit(train$Fare))
 ```
-## Correlation. Interpretation.
-```{r}
+Cuartiles y rango intercuartil de la tarifa.
+
+Se puede denotar aquí que el 50 % de las personas pagaron una tarifa entre 7.91 y 31.00 en la moneda que se haya pagado. Además, existieron personas que no pagaron ni un solo centavo, se subieron gratis, y otra persona que pagó 512.30 que fue la que dió más.
+```{r, echo=FALSE}
+summary(na.omit(train$Fare))
+IQR(na.omit(train$Fare))
+```
+
+## Correlación
+Correlación entre la edad y la tarifa.
+
+Al observar esta correlación entre estos dos datos, se puede observar que tienen una ligera correlación, por lo que al aumentar una, ligeramente aumentará la otra
+```{r, echo=FALSE}
+
+b0 = "$\\beta_0$"
+
 cor(train$Age,train$Fare, use="complete.obs")
 
 ```
-## Scatterplots. Interpretation.
-```{r}
+Let's see if it works: `r b0`.
 
-train$Pclass <- as.factor(train$Pclass)
-train$Survived <- as.factor(train$Survived)
-plot(train$Pclass,train$Survived)
+## Gráficos de dispersión.
+La Gráfica de dispersión de la edad con respecto a la Tarifa.
+
+Como se puede apreciar en la correlación que tienen estás dos variables, tienen una relación positiva muy baja, por lo que nos indica que si la edad aumenta, la tarifa aumenta relativamente poco.
+```{r, echo=FALSE}
+Fare = train$Fare
+Age = train$Age
+plot(Fare ~ Age, data=train, xlab = "Edad", ylab = "Tarifa")
+abline(lm(Fare ~ Age, data=train))
+```
+
+
+## Gráficos Aparte.
+Representación de la clase con respecto a los sobrevivientes/muertos de cada una.
+
+En la gráfica se puede observar que la mayor cantidad de personas que se salvaron fueron los de la clase 1, que casi se salvaron alrededor de 3/5, por lo que si eras de la clase 1 tenías muchas más probabilidades de salvarte.
+
+Por el lado contrario, los que más se murieron fueron los de la clase 3, muriendo casi el 80 %, lo que quiere decir que si eras de clase 3 tenías pocas probabilidades de sobrevivir.
+
+La clase 2 en su defecto fue la más balaceada, casi sobrevivieron la misma cantidad que murieron.
+```{r, echo=FALSE}
+pclassFac <- as.factor(train$Pclass)
+surviFac <- factor(train$Survived, levels=c(0,1), labels=c('MURIO', 'SOBREVIVIO'))
+plot(pclassFac,surviFac, xlab = "Clase", ylab ="Supervivencia")
+```
+
+Representación de el sexo con respecto a los sobrevivientes.
+
+Lo que se puede observar en la gráfica, es que la mayoría de los hombres se sacrificaron para salvar a casi el 80 % de las mujeres, gracias a tener una postura machista, esto sucedió.
+```{r, echo=FALSE}
+sexFac <- factor(train$Sex, labels=c('MUJER', 'HOMBRE'))
+surviFac <- factor(train$Survived, levels=c(0,1), labels=c('MURIO', 'SOBREVIVIO'))
+plot(sexFac,surviFac, xlab = "Sexo", ylab ="Supervivencia")
+```
+
+Representación de los sobrevivientes con respecto a la embarcación  que subieron abordo del barco.
+
+Al observar la gráfica la mayor parte de los que se subieron en la embarcación de Cherbourg sobrevivieron, por que se tenía más probabilidad de sobrevivir, aunque la mayoría de las personas se subieron en la embarcación de Southampton, fueron menos personas las que sobrevivieron con respecto al porcentaje original de las personas que se subieron en esa embarcación, por lo que si te subiste en esta embarcación, quizás tenías menos probabilidad de sobrevivir.
+```{r, echo=FALSE}
+table(train$Embarked)
+embFac <- factor(train$Embarked)
+surviFac <- factor(train$Survived, levels=c(0,1), labels=c('MURIO', 'SOBREVIVIO'))
+plot(embFac,surviFac, xlab = "Embarcación", ylab ="Supervivencia")
 ```
