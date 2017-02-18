@@ -45,7 +45,7 @@ str(train)
 ```
 
 
-## Describe cada una de las variables
+## Describe each of the variables
 Sobrevivientes 
 ```{r}
 train$Survived <- as.factor(train$Survived)
@@ -59,7 +59,8 @@ table(train$Pclass)
 
 Nombre 
 ```{r}
-#train$Name
+length(train$Name)
+
 ```
 
 
@@ -85,7 +86,7 @@ table(train$Parch)
 
 Ticket 
 ```{r}
-
+length(unique(train$Ticket))
 ```
 
 Fare 
@@ -116,39 +117,41 @@ summary(train$Survived)
 
 Clase
 ```{r}
-
+summary(train$Pclass)
 ```
 
 Nombre 
 ```{r}
-
+summary(train$Name)
 ```
 
 
 Sex 
 ```{r}
-
+summary(train$Sex)
 ```
 
 SibSp  "Número de hermanos / cónyuges en el extranjero"
 ```{r}
-
+summary(train$SibSp)
 ```
 
 Parch  "Parche Número de Padres / Niños a bordo"
 ```{r}
-
+summary(train$Parch)
 ```
 
 
 Ticket 
+Había algunos grandes grupos de viajes donde al menos 6 pasajeros comparten el mismo billete de embarque. Entre los 930 boletos de embarque, 12 boletos tenían al menos 6 pasajeros compartiendo el mismo boleto, con los nombres de los 86 pasajeros mostrados abajo.
 ```{r}
-
+shareTix <- train[train$Ticket %in% names(table(train$Ticket))[table(train$Ticket) > 5],]
+shareTix[order(shareTix$Ticket),]$Name
 ```
 
 Fare 
 ```{r}
-
+sum(train$Fare !="")
 ```
 
 Cabin 
@@ -162,9 +165,11 @@ Embarked
 ```
 
 ## Boxplots. Interpretation.
+Edades de pasajeros (Años)
 ```{r}
 boxplot(train$Age, xlab="Edades de pasajeros (Años)")
 ```
+
 
 
 ## Skew of the data. Interpretation.

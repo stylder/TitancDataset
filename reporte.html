@@ -127,7 +127,7 @@ $(document).ready(function () {
 <h2>Leer Datos</h2>
 <p>Conocer ubicación de directorio</p>
 <pre class="r"><code>getwd()</code></pre>
-<pre><code>## [1] &quot;C:/Users/HeavyRain350/Desktop/erik/8vo Semestre/Minería de datos/TitancDataset&quot;</code></pre>
+<pre><code>## [1] &quot;E:/Dropbox/UAZ/SEMESTRE_8/Minería de Datos/TitancDataset&quot;</code></pre>
 <p>Mostrar contenido del directorio actual</p>
 <pre class="r"><code>list.files()</code></pre>
 <pre><code>## [1] &quot;LICENSE&quot;           &quot;presentación.html&quot; &quot;presentación.Rmd&quot; 
@@ -190,8 +190,8 @@ $(document).ready(function () {
 ##  $ Cabin      : chr  &quot;&quot; &quot;C85&quot; &quot;&quot; &quot;C123&quot; ...
 ##  $ Embarked   : chr  &quot;S&quot; &quot;C&quot; &quot;S&quot; &quot;S&quot; ...</code></pre>
 </div>
-<div id="describe-cada-una-de-las-variables" class="section level2">
-<h2>Describe cada una de las variables</h2>
+<div id="describe-each-of-the-variables" class="section level2">
+<h2>Describe each of the variables</h2>
 <p>Sobrevivientes</p>
 <pre class="r"><code>train$Survived &lt;- as.factor(train$Survived)
 table(train$Survived)</code></pre>
@@ -204,7 +204,8 @@ table(train$Survived)</code></pre>
 ##   1   2   3 
 ## 216 184 491</code></pre>
 <p>Nombre</p>
-<pre class="r"><code>#train$Name</code></pre>
+<pre class="r"><code>length(train$Name)</code></pre>
+<pre><code>## [1] 891</code></pre>
 <p>Sex</p>
 <pre class="r"><code>train$Sex &lt;- as.factor(train$Sex)
 table(train$Sex)</code></pre>
@@ -229,6 +230,8 @@ table(train$Parch)</code></pre>
 ##   0   1   2   3   4   5   6 
 ## 678 118  80   5   4   5   1</code></pre>
 <p>Ticket</p>
+<pre class="r"><code>length(unique(train$Ticket))</code></pre>
+<pre><code>## [1] 681</code></pre>
 <p>Fare</p>
 <p>Cabin</p>
 <p>Embarked (C = Cherbourg; Q = Queenstown; S = Southampton)</p>
@@ -245,12 +248,70 @@ table(train$Embarked)</code></pre>
 <pre><code>##   0   1 
 ## 549 342</code></pre>
 <p>Clase</p>
+<pre class="r"><code>summary(train$Pclass)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.000   2.000   3.000   2.309   3.000   3.000</code></pre>
 <p>Nombre</p>
+<pre class="r"><code>summary(train$Name)</code></pre>
+<pre><code>##    Length     Class      Mode 
+##       891 character character</code></pre>
 <p>Sex</p>
+<pre class="r"><code>summary(train$Sex)</code></pre>
+<pre><code>## female   male 
+##    314    577</code></pre>
 <p>SibSp “Número de hermanos / cónyuges en el extranjero”</p>
+<pre class="r"><code>summary(train$SibSp)</code></pre>
+<pre><code>##   0   1   2   3   4   5   8 
+## 608 209  28  16  18   5   7</code></pre>
 <p>Parch “Parche Número de Padres / Niños a bordo”</p>
-<p>Ticket</p>
+<pre class="r"><code>summary(train$Parch)</code></pre>
+<pre><code>##   0   1   2   3   4   5   6 
+## 678 118  80   5   4   5   1</code></pre>
+<p>Ticket Había algunos grandes grupos de viajes donde al menos 6 pasajeros comparten el mismo billete de embarque. Entre los 930 boletos de embarque, 12 boletos tenían al menos 6 pasajeros compartiendo el mismo boleto, con los nombres de los 86 pasajeros mostrados abajo.</p>
+<pre class="r"><code>shareTix &lt;- train[train$Ticket %in% names(table(train$Ticket))[table(train$Ticket) &gt; 5],]
+shareTix[order(shareTix$Ticket),]$Name</code></pre>
+<pre><code>##  [1] &quot;Bing, Mr. Lee&quot;                                            
+##  [2] &quot;Ling, Mr. Lee&quot;                                            
+##  [3] &quot;Lang, Mr. Fang&quot;                                           
+##  [4] &quot;Foo, Mr. Choong&quot;                                          
+##  [5] &quot;Lam, Mr. Ali&quot;                                             
+##  [6] &quot;Lam, Mr. Len&quot;                                             
+##  [7] &quot;Chip, Mr. Chang&quot;                                          
+##  [8] &quot;Panula, Master. Juha Niilo&quot;                               
+##  [9] &quot;Panula, Master. Eino Viljami&quot;                             
+## [10] &quot;Panula, Mr. Ernesti Arvid&quot;                                
+## [11] &quot;Panula, Mrs. Juha (Maria Emilia Ojala)&quot;                   
+## [12] &quot;Panula, Mr. Jaako Arnold&quot;                                 
+## [13] &quot;Panula, Master. Urho Abraham&quot;                             
+## [14] &quot;Andersson, Mr. Anders Johan&quot;                              
+## [15] &quot;Andersson, Miss. Ellis Anna Maria&quot;                        
+## [16] &quot;Andersson, Miss. Ingeborg Constanzia&quot;                     
+## [17] &quot;Andersson, Miss. Sigrid Elisabeth&quot;                        
+## [18] &quot;Andersson, Mrs. Anders Johan (Alfrida Konstantia Brogren)&quot;
+## [19] &quot;Andersson, Miss. Ebba Iris Alfrida&quot;                       
+## [20] &quot;Andersson, Master. Sigvard Harald Elias&quot;                  
+## [21] &quot;Skoog, Master. Harald&quot;                                    
+## [22] &quot;Skoog, Mrs. William (Anna Bernhardina Karlsson)&quot;          
+## [23] &quot;Skoog, Mr. Wilhelm&quot;                                       
+## [24] &quot;Skoog, Miss. Mabel&quot;                                       
+## [25] &quot;Skoog, Miss. Margit Elizabeth&quot;                            
+## [26] &quot;Skoog, Master. Karl Thorsten&quot;                             
+## [27] &quot;Goodwin, Master. William Frederick&quot;                       
+## [28] &quot;Goodwin, Miss. Lillian Amy&quot;                               
+## [29] &quot;Goodwin, Master. Sidney Leonard&quot;                          
+## [30] &quot;Goodwin, Master. Harold Victor&quot;                           
+## [31] &quot;Goodwin, Mrs. Frederick (Augusta Tyler)&quot;                  
+## [32] &quot;Goodwin, Mr. Charles Edward&quot;                              
+## [33] &quot;Sage, Master. Thomas Henry&quot;                               
+## [34] &quot;Sage, Miss. Constance Gladys&quot;                             
+## [35] &quot;Sage, Mr. Frederick&quot;                                      
+## [36] &quot;Sage, Mr. George John Jr&quot;                                 
+## [37] &quot;Sage, Miss. Stella Anna&quot;                                  
+## [38] &quot;Sage, Mr. Douglas Bullen&quot;                                 
+## [39] &quot;Sage, Miss. Dorothy Edith \&quot;Dolly\&quot;&quot;</code></pre>
 <p>Fare</p>
+<pre class="r"><code>sum(train$Fare !=&quot;&quot;)</code></pre>
+<pre><code>## [1] 891</code></pre>
 <p>Cabin</p>
 <pre class="r"><code>sum(train$Cabin != &quot;&quot;)</code></pre>
 <pre><code>## [1] 204</code></pre>
@@ -258,6 +319,7 @@ table(train$Embarked)</code></pre>
 </div>
 <div id="boxplots.-interpretation." class="section level2">
 <h2>Boxplots. Interpretation.</h2>
+<p>Edades de pasajeros (Años)</p>
 <pre class="r"><code>boxplot(train$Age, xlab=&quot;Edades de pasajeros (Años)&quot;)</code></pre>
 <p><img src="data:image/png;base64,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" width="672" /></p>
 </div>
