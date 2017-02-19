@@ -1,9 +1,14 @@
 ---
-title: "Reporte"
+title: "Reporte" 
 author: "Erik Mejia Hernandez -Santiago García Cabral"
 date: "16 de febrero de 2017"
 output: html_document
 ---
+
+<center>
+![The Titanic (right), pictured on March 6, 1912](images/titanic.jpg)
+</center>
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -60,7 +65,6 @@ table(train$Pclass)
 Nombre 
 ```{r}
 length(train$Name)
-
 ```
 
 
@@ -89,17 +93,9 @@ Ticket
 length(unique(train$Ticket))
 ```
 
-Fare 
-```{r}
 
-```
 
-Cabin 
-```{r}
-
-```
-
-Embarked (C = Cherbourg; Q = Queenstown; S = Southampton)
+![Embarked (C = Cherbourg; Q = Queenstown; S = Southampton)](images/ruta.png)
 ```{r}
 train$Embarked <- as.factor(train$Embarked)
 table(train$Embarked)
@@ -115,35 +111,35 @@ Sobrevivientes
 summary(train$Survived)
 ```
 
-Clase
+Clase (1=Superior, 2=Medio or 3=Baja)
 ```{r}
 summary(train$Pclass)
 ```
 
-Nombre 
+Total de personas a bordo del Titanic 
 ```{r}
 summary(train$Name)
 ```
 
 
-Sex 
+Sexo de los pasajeros 
 ```{r}
 summary(train$Sex)
 ```
 
-SibSp  "Número de hermanos / cónyuges en el extranjero"
+Número de hermanos / cónyuges en el extranjero
 ```{r}
 summary(train$SibSp)
 ```
 
-Parch  "Parche Número de Padres / Niños a bordo"
+Parche Número de Padres / Niños a bordo
 ```{r}
 summary(train$Parch)
 ```
 
 
 Ticket 
-Había algunos grandes grupos de viajes donde al menos 6 pasajeros comparten el mismo billete de embarque. Entre los 930 boletos de embarque, 12 boletos tenían al menos 6 pasajeros compartiendo el mismo boleto, con los nombres de los 86 pasajeros mostrados abajo.
+Entre los 891 boletos de embarque, había pasajeros compartiendo el mismo boleto, con los nombres de los 39 pasajeros mostrados abajo.
 ```{r}
 shareTix <- train[train$Ticket %in% names(table(train$Ticket))[table(train$Ticket) > 5],]
 shareTix[order(shareTix$Ticket),]$Name
@@ -173,6 +169,9 @@ boxplot(train$Age, xlab="Edades de pasajeros (Años)")
 
 
 ## Skew of the data. Interpretation.
+
+
+
 
 ## Histogramas.
 Histograma de la edad.
