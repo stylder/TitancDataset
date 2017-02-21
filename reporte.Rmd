@@ -68,20 +68,20 @@ Cantidad de pasajeros por clase
 table(train$Pclass)
 ```
 
-Cantaidad de pasajeros, no se tiene un registro de los trabajadores.
-```{r}
+Cantaidad de pasajeros.
+```{r, echo=FALSE}
 length(train$Name)
 ```
 
 
-Sex 
+Cantidad de hombre y mujeres
 ```{r}
 train$Sex <- as.factor(train$Sex)
 table(train$Sex)
 table(train$Sex, train$Survived)
 ```
 
-SibSp  "Número de hermanos / cónyuges en el extranjero"
+Número de hermanos / cónyuges en el extranjero
 ```{r}
 train$SibSp <- as.factor(train$SibSp)
 table(train$SibSp)
