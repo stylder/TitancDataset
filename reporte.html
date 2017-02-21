@@ -165,7 +165,7 @@ table(train$Survived)</code></pre>
 <p>Cantaidad de pasajeros, no se tiene un registro de los trabajadores.</p>
 <pre class="r"><code>length(train$Name)</code></pre>
 <pre><code>## [1] 891</code></pre>
-<p>Sex</p>
+<p>Cantidad de hombre y mujeres</p>
 <pre class="r"><code>train$Sex &lt;- as.factor(train$Sex)
 table(train$Sex)</code></pre>
 <pre><code>## 
@@ -176,7 +176,7 @@ table(train$Sex)</code></pre>
 ##            0   1
 ##   female  81 233
 ##   male   468 109</code></pre>
-<p>SibSp “Número de hermanos / cónyuges en el extranjero”</p>
+<p>Número de hermanos / cónyuges en el extranjero</p>
 <pre class="r"><code>train$SibSp &lt;- as.factor(train$SibSp)
 table(train$SibSp)</code></pre>
 <pre><code>## 
