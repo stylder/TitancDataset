@@ -203,6 +203,8 @@ IQR(na.omit(train$Fare))
 ```
 
 ## Correlación
+Correlación: Correspondencia o relación recíproca entre dos o más acciones o fenómenos.
+
 Correlación entre la edad y la tarifa.
 
 Al observar esta correlación entre estos dos datos, se puede observar que tienen una ligera correlación, por lo que al aumentar una, ligeramente aumentará la otra
@@ -254,7 +256,7 @@ Representación de los sobrevivientes con respecto a la embarcación  que subieron
 
 Al observar la gráfica la mayor parte de los que se subieron en la embarcación de Cherbourg sobrevivieron, por que se tenía más probabilidad de sobrevivir, aunque la mayoría de las personas se subieron en la embarcación de Southampton, fueron menos personas las que sobrevivieron con respecto al porcentaje original de las personas que se subieron en esa embarcación, por lo que si te subiste en esta embarcación, quizás tenías menos probabilidad de sobrevivir.
 ```{r, echo=FALSE}
-table(train$Embarked)
+
 embFac <- factor(train$Embarked)
 surviFac <- factor(train$Survived, levels=c(0,1), labels=c('MURIO', 'SOBREVIVIO'))
 plot(embFac,surviFac, xlab = "Embarcación", ylab ="Supervivencia")
