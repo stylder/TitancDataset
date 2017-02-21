@@ -97,35 +97,59 @@
           </hgroup>
   </slide>
 
-<slide class=''><hgroup><h2>R Markdown</h2></hgroup><article  id="r-markdown">
+<slide class=''><hgroup><h2>Titanic</h2></hgroup><article  id="titanic">
 
-<p>This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href='http://rmarkdown.rstudio.com' title=''>http://rmarkdown.rstudio.com</a>.</p>
+<p>El RMS Titanic fue un transatlántico británico, el mayor barco de pasajeros del mundo en el momento de su terminación, que se hundió en la noche del 14 a la madrugada del 15 de abril de 1912 durante su viaje inaugural desde Southampton a Nueva York. En el hundimiento del Titanic murieron 1514 personas de las 2223 que iban a bordo, lo que convierte a esta tragedia en uno de los mayores naufragios de la historia ocurridos en tiempo de paz. Construido entre 1909 y 1912 en el astillero Harland and Wolff de Belfast, el Titanic era el segundo de los tres transatlánticos que formaban la clase Olympic, propiedad de la naviera White Star Line, junto al RMS Olympic y, posteriormente, el HMHS Britannic.</p>
 
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.</p>
+<p>Solo se analizarán 891 personas de las que se tienen registro.</p>
 
-</article></slide><slide class=''><hgroup><h2>Slide with Bullets</h2></hgroup><article  id="slide-with-bullets">
+</article></slide><slide class=''><hgroup><h2>Describir el domino de la información</h2></hgroup><article  id="describir-el-domino-de-la-informacion">
 
-<ul>
-<li>Bullet 1</li>
-<li>Bullet 2</li>
-<li>Bullet 3</li>
-</ul>
+<p>Id</p>
 
-</article></slide><slide class=''><hgroup><h2>Slide with R Output</h2></hgroup><article  id="slide-with-r-output">
+<p>Sobrevivió : 1=Si, 0=no</p>
 
-<pre class = 'prettyprint lang-r'>summary(cars)</pre>
+<p>Clase de pasajeros : 1=Superior, 2=Mediana or 3=Baja</p>
 
-<pre >##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</pre>
+<p>Nombre</p>
 
-</article></slide><slide class=''><hgroup><h2>Slide with Plot</h2></hgroup><article  id="slide-with-plot">
+<p>Sexo : female= mujer, male=hombre</p>
 
-<p><img src="presentación_files/figure-html/pressure-1.png" width="720" /></p></article></slide>
+<p>Años</p>
+
+<p>Número de hermanos / cónyuges en el extranjero</p>
+
+<p>Número de padres / niños a bordo</p>
+
+</article></slide><slide class=''><hgroup><h2>Continuación - Describir el domino de la información</h2></hgroup><article  id="continuacion---describir-el-domino-de-la-informacion">
+
+<p>Número de Ticket</p>
+
+<p>Tarifa de pasajeros</p>
+
+<p>Cabina</p>
+
+<p>Puerto o embarcación: C = Cherbourg, Q = Queenstown, S = Southampton</p>
+
+</article></slide><slide class=''><hgroup><h2>Histogramas.</h2></hgroup><article  id="histogramas.">
+
+<p>Histograma de la edad. <img src="presentación_files/figure-html/unnamed-chunk-2-1.png" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>Cuartiles.</h2></hgroup><article  id="cuartiles.">
+
+<p>Cuartiles y rango intercuartil de la edad.</p>
+
+<pre >##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    0.42   20.12   28.00   29.70   38.00   80.00</pre>
+
+<pre >## [1] 17.875</pre>
+
+<p>Cuartiles y rango intercuartil de la tarifa.</p>
+
+<pre >##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    0.00    7.91   14.45   32.20   31.00  512.30</pre>
+
+<pre >## [1] 23.0896</pre></article></slide>
 
 
   <slide class="backdrop"></slide>

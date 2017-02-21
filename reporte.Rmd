@@ -13,56 +13,62 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-## Leer Datos
-Conocer ubicación de directorio
-```{r}
+
+```{r , echo=FALSE , include=FALSE}
 getwd()
-```
-
-
-Mostrar contenido del directorio actual
-```{r}
 list.files()
-```
-
-Cargar datos de archivo en una variable
-```{r}
 train <- read.csv("train.csv", stringsAsFactors = FALSE)
-```
-
-
-
-Para comprobar que el archivo se bajó
-```{r}
 head(train)
-```
-
-para ver la estructura del dataset
-```{r}
 str(train)
 ```
 
+## Contexto 
+El RMS Titanic fue un transatlántico británico, el mayor barco de pasajeros del mundo en el momento de su terminación, que se hundió en la noche del 14 a la madrugada del 15 de abril de 1912 durante su viaje inaugural desde Southampton a Nueva York. En el hundimiento del Titanic murieron 1514 personas de las 2223 que iban a bordo, lo que convierte a esta tragedia en uno de los mayores naufragios de la historia ocurridos en tiempo de paz. Construido entre 1909 y 1912 en el astillero Harland and Wolff de Belfast, el Titanic era el segundo de los tres transatlánticos que formaban la clase Olympic, propiedad de la naviera White Star Line, junto al RMS Olympic y, posteriormente, el HMHS Britannic.
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-96QC0C7xW4" frameborder="0" allowfullscreen></iframe>
+</center>
+## Describir el domino de la información
+Id 
+
+Sobrevivió : 1=Si, 0=no
+
+Clase de pasajeros  : 1=Superior, 2=Mediana or 3=Baja
+
+Nombre 
+
+Sexo : female= mujer,  male=hombre 
+
+Años 
+
+Número de hermanos / cónyuges en el extranjero 
+
+Número de padres / niños a bordo 
+
+Número de Ticket  
+
+Tarifa de pasajeros
+
+Cabina 
+
+Puerto o embarcación: C = Cherbourg, Q = Queenstown,  S = Southampton 
 
 
-## Describe the data domain
-```{r}
-str(train)
-```
 
-
-## Describe each of the variables
-Sobrevivientes 
+## Describir cada una de las variables.
+Cantidad de sobrevivientes  (0= murió, 1= vivió)
 ```{r}
 train$Survived <- as.factor(train$Survived)
 table(train$Survived)
 ```
 
-Clase
+Cantidad de pasajeros por clase
+(1=Superior, 2=Mediana or 3=Baja)
 ```{r}
 table(train$Pclass)
 ```
 
-Nombre 
+Cantaidad de pasajeros, no se tiene un registro de los trabajadores.
 ```{r}
 length(train$Name)
 ```
@@ -88,7 +94,7 @@ table(train$Parch)
 ```
 
 
-Ticket 
+Cantidad de tickets únicos. 
 ```{r}
 length(unique(train$Ticket))
 ```
@@ -105,7 +111,7 @@ table(train$Embarked)
 
 
 
-## Basic summary statistics.
+## Estadisticas básicas de resumen.
 Sobrevivientes 
 ```{r}
 summary(train$Survived)
@@ -117,12 +123,12 @@ summary(train$Pclass)
 ```
 
 Total de personas a bordo del Titanic 
-```{r}
+```{r, echo=FALSE}
 summary(train$Name)
 ```
 
 
-Sexo de los pasajeros 
+Sexo de los pasajeros (female=mujer, male=hombre)
 ```{r}
 summary(train$Sex)
 ```
@@ -145,21 +151,6 @@ shareTix <- train[train$Ticket %in% names(table(train$Ticket))[table(train$Ticke
 shareTix[order(shareTix$Ticket),]$Name
 ```
 
-Fare 
-```{r}
-sum(train$Fare !="")
-```
-
-Cabin 
-```{r}
-sum(train$Cabin != "")
-```
-
-Embarked 
-```{r}
-
-```
-
 ## Boxplots. Interpretation.
 Edades de pasajeros (Años)
 ```{r}
@@ -168,7 +159,23 @@ boxplot(train$Age, xlab="Edades de pasajeros (Años)")
 
 
 
-## Skew of the data. Interpretation.
+## Inclinación de los datos. Interpretación.
+
+```{r, echo=FALSE}
+summary(na.omit(train$Age))
+median(na.omit(train$Age))
+
+```
+
+```{r, echo=FALSE}
+hist(na.omit(train$Age),
+     main = "Histograma de las edades de los pasajeros",
+     xlab = "Edad",
+     ylab = "Personas",
+     labels = TRUE)
+
+
+```
 
 
 
@@ -207,15 +214,14 @@ Correlación: Correspondencia o relación recíproca entre dos o más acciones o fen
 
 Correlación entre la edad y la tarifa.
 
-Al observar esta correlación entre estos dos datos, se puede observar que tienen una ligera correlación, por lo que al aumentar una, ligeramente aumentará la otra
+Al observar esta correlación entre estos dos datos, se puede observar que tienen una ligera correlación, por lo que al aumentar una, ligera, muy ligeramente aumentará la otra.
+Se omitieron los nulos en esta operación.
 ```{r, echo=FALSE}
-
-b0 = "$\\beta_0$"
-
-cor(train$Age,train$Fare, use="complete.obs")
+corAge <- na.omit(train$Age)
+corFare <- na.omit(ifelse(is.na(train$Age),NA,train$Fare))
+cor(corAge,corFare, use="complete.obs")
 
 ```
-Let's see if it works: `r b0`.
 
 ## Gráficos de dispersión.
 La Gráfica de dispersión de la edad con respecto a la Tarifa.
