@@ -18,7 +18,7 @@ str(train)
 ```
 ## Titanic
 
-El RMS Titanic fue un transatlántico británico, el mayor barco de pasajeros del mundo en el momento de su terminación, que se hundió en la noche del 14 a la madrugada del 15 de abril de 1912 durante su viaje inaugural desde Southampton a Nueva York. En el hundimiento del Titanic murieron 1514 personas de las 2223 que iban a bordo, lo que convierte a esta tragedia en uno de los mayores naufragios de la historia ocurridos en tiempo de paz. Construido entre 1909 y 1912 en el astillero Harland and Wolff de Belfast, el Titanic era el segundo de los tres transatlánticos que formaban la clase Olympic, propiedad de la naviera White Star Line, junto al RMS Olympic y, posteriormente, el HMHS Britannic.
+El RMS Titanic fue un transatlántico británico, el mayor barco de pasajeros del mundo en el momento de su terminación, que se hundió en la noche del 14 al 15 de abril de 1912 durante su viaje inaugural desde Southampton a Nueva York. En el hundimiento del Titanic murieron 1514 personas de las 2223 que iban a bordo, lo que convierte a esta tragedia en uno de los mayores naufragios de la historia ocurridos en tiempo de paz. Construido entre 1909 y 1912 en el astillero Harland and Wolff de Belfast, el Titanic era el segundo de los tres transatlánticos que formaban la clase Olympic, propiedad de la naviera White Star Line, junto al RMS Olympic y, posteriormente, el HMHS Britannic.
 
 Solo se analizarán 891 personas de las que se tienen registro.
 
@@ -49,42 +49,56 @@ Cabina
 Puerto o embarcación: C = Cherbourg, Q = Queenstown,  S = Southampton 
 
 ## Describir cada una de las variables.
-Cantidad de sobrevivientes  (0= murió, 1= vivió)
-```{r}
-
-
-train$Survived <- as.factor(train$Survived)
-table(train$Survived)
-
-```
-
-Cantidad de pasajeros por clase
-(1=Superior, 2=Mediana or 3=Baja)
-```{r}
-table(train$Pclass)
-```
 
 Cantaidad de pasajeros.
 ```{r, echo=FALSE}
 length(train$Name)
 ```
 
-##Describir cada una de las variables. [2]
+
+
+Cantidad de pasajeros por clase
+
+* En el siglo XIX la prioridad era el transporte
+
+* El Titanic era el mayor y más lujoso barco jamás construido.
+
+(1=Superior, 2=Mediana or 3=Baja)
+```{r}
+table(train$Pclass)
+```
+
+
+## Describir cada una de las variables. [2]
+Cantidad de sobrevivientes  (0= murió, 1= vivió)
+```{r}
+train$Survived <- as.factor(train$Survived)
+table(train$Survived)
+```
+
 
 Cantidad de hombre y mujeres
 ```{r}
 train$Sex <- as.factor(train$Sex)
 table(train$Sex)
+
+```
+
+Cantidad de sobrevivientes por sexo
+```{r}
 table(train$Sex, train$Survived)
 ```
+
+
+##Describir cada una de las variables. [3]
+
 Número de hermanos / cónyuges en el extranjero
 ```{r}
 train$SibSp <- as.factor(train$SibSp)
 table(train$SibSp)
 ```
 
-##Describir cada una de las variables. [3]
-Parch  "Parche Número de Padres / Niños a bordo"
+Número de Padres / Niños a bordo
 ```{r}
 train$Parch <- as.factor(train$Parch)
 table(train$Parch)
@@ -97,7 +111,7 @@ length(unique(train$Ticket))
 
 ##Describir cada una de las variables. [4]
 
-![Embarked (C = Cherbourg; Q = Queenstown; S = Southampton)](images/ruta.png)
+![EMBARCACIÓN (C = Cherbourg; Q = Queenstown; S = Southampton)](images/ruta.png)
 ```{r}
 train$Embarked <- as.factor(train$Embarked)
 table(train$Embarked)
@@ -105,7 +119,7 @@ table(train$Embarked)
 
 ## Estadisticas básicas de resumen.
 Ticket 
-Entre los 891 boletos de embarque, había pasajeros compartiendo el mismo boleto, con los nombres de los 39 pasajeros mostrados abajo.
+Entre los 891 boletos de embarque, había pasajeros compartiendo el mismo boleto, con los nombres de los **39** pasajeros mostrados abajo.
 
 ```{r}
 shareTix <- train[train$Ticket %in% names(table(train$Ticket))[table(train$Ticket) > 5],]
