@@ -23,34 +23,48 @@ El RMS Titanic fue un transatlántico británico, el mayor barco de pasajeros del 
 Solo se analizarán 891 personas de las que se tienen registro.
 
 ## Describir el domino de la información
-Id 
+* Id 
 
-Sobrevivió : 1=Si, 0=no
+* Sobrevivió : 1=Si, 0=no
 
-Clase de pasajeros  : 1=Superior, 2=Mediana or 3=Baja
+* Nombre 
 
-Nombre 
+* Sexo : female= mujer,  male=hombre 
 
-Sexo : female= mujer,  male=hombre 
+* Años 
 
-Años 
+##Describir el domino de la información
+ 
+* Clase de pasajeros  : 1=Superior, 2=Mediana or 3=Baja
 
-Número de hermanos / cónyuges en el extranjero 
+* Cabina 
 
-Número de padres / niños a bordo 
+<center>
+![](images/cuarto.jpg)
+</center> 
+<sub><sup>Exposición Titanic Centenary 2012: La mayoría de los pasajeros de tercera clase, casi todos inmigrantes irlandeses, embarcaron en el Titanic con el objeto de cumplir el sueño de su vida: labrarse un porvenir en America y regresar a Irland</sup></sub>
 
-##Describir el domino de la información. [2]
-Número de Ticket  
 
-Tarifa de pasajeros
 
-Cabina 
 
-Puerto o embarcación: C = Cherbourg, Q = Queenstown,  S = Southampton 
+##Domino de la información. [2]
+* Número de hermanos / cónyuges en el extranjero 
+
+* Número de padres / niños a bordo 
+
+* Tarifa de pasajeros
+
+* Puerto o embarcación: C = Cherbourg, Q = Queenstown,  S = Southampton 
+
+##Domino de la información. [3]
+* Número de Ticket
+<center>
+![](images/boleto.jpg)
+</center>
 
 ## Describir cada una de las variables.
 
-Cantaidad de pasajeros.
+Cantidad de pasajeros.
 ```{r, echo=FALSE}
 length(train$Name)
 ```
@@ -202,6 +216,7 @@ plot(sexFac,surviFac, xlab = "Sexo", ylab ="Supervivencia")
 
 ## Sobrevivientes con respecto a la embarcación  que subieron abordo del barco.
 
+C = Cherbourg, Q = Queenstown,  S = Southampton
 ```{r, echo=FALSE}
 
 embFac <- factor(train$Embarked)
